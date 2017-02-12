@@ -24,9 +24,9 @@ gulp.task('minify-css', function() {
             console.log(details.name + ': ' + details.stats.originalSize);
             console.log(details.name + ': ' + details.stats.minifiedSize);
         }))
-        .pipe(gulp.dest('./..'));
+        .pipe(gulp.dest('./src/min'));
 });
 gulp.task('watch',function() {
   gulp.watch('./src/*.scss',['sass']);
-  gulp.watch('./src/*.css',['autoprefixer','minify-css']);
+  gulp.watch('./src/*.css',['minify-css','autoprefixer']);
 });

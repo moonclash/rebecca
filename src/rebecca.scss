@@ -1,3 +1,4 @@
+
 //custom timing mixin
 
 @mixin customAnimationDuration($time) {
@@ -119,6 +120,52 @@
   }
 }
 
+@keyframes rb-flipXAndShow {
+  0% {
+    transform: rotateX(90deg);
+  }
+  
+  100% {
+    transform: rotateX(0);
+  }
+ 
+}
+
+
+
+//interactions animations
+
+@keyframes rb-blurAndshake {
+  0% {
+    transform: translateX(5%);
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateX(-5%);
+    filter: blur(2px);
+  }
+}
+
+@keyframes rb-bounce {
+  0% {
+    transform: translateY(5%);
+  }
+  100% {
+    transform: translateY(-5%);
+  }
+}
+
+@keyframes rb-pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+} 
+
+ 
+
 
 
 //exit-animations
@@ -145,6 +192,49 @@
     opacity: 0;
   }
 }
+
+@keyframes rb-slideDown {
+  0% {
+    transform: translateY(0);
+  }
+  
+  50% {
+    transform: translateY(-50%);
+  }
+  
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes rb-slideUp {
+  0% {
+    transform: translateY(0);
+  }
+  
+  50% {
+    transform: translateY(50%);
+  }
+  
+  100% {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes rb-hingeFadeDown {
+  100% {
+    transform: rotateX(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rb-rotateAndFade {
+  100% {
+    transform: rotate(45deg);
+    opacity: 0;
+  }
+}
+
 
 //entries-classes
 
@@ -193,6 +283,25 @@
   animation: 500ms rb-scaleDownAndFadeIn ease;
 }
 
+.rb-flipXAndShow {
+  transform-style: preserve-3d;
+  animation: 300ms rb-flipXAndShow linear;
+}
+
+//interaction classes 
+
+.rb-blurAndshake {
+  animation: 100ms rb-blurAndshake linear 5 alternate;
+}
+
+.rb-bounce {
+  animation: 100ms rb-bounce linear 5 alternate;
+}
+
+.rb-pulse {
+  animation: 300ms rb-pulse ease infinite alternate;
+}
+
 //exit-classes
 
 .rb-scaleUpAndFadeOut {
@@ -201,4 +310,22 @@
 
 .rb-scaleDownAndFadeOut {
   animation: 500ms rb-scaleDownAndFadeOut ease forwards;
+}
+
+.rb-slideDown {
+  animation: 500ms rb-slideDown linear forwards;
+}
+
+.rb-slideUp {
+  animation: 500ms rb-slideUp linear forwards;
+}
+
+.rb-hingeFadeDown {
+  animation: 250ms rb-hingeFadeDown cubic-bezier(.5,.4,.3,.2);
+  transform-origin: 50% 100%
+}
+
+.rb-rotateAndFade {
+  transform-origin: 100% 50%;
+  animation: 250ms rb-rotateAndFade cubic-bezier(.8,.6,.5,.2);
 }
