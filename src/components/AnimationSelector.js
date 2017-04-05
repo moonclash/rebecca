@@ -1,10 +1,14 @@
 import React from 'react';
 
-const AnimationSelector = (props) => {
-  return (<select onChange={props.onChange}>
-            {props.children}
+class AnimationSelector extends React.Component {
+  render() {
+    return (<select onChange={this.props.onChange}>
+            {this.props.children}
          </select>);
+  }
 }
+  
+
 
 
 AnimationSelector.propTypes ={

@@ -1,27 +1,43 @@
 import React from 'react';
 import  classes  from '../classes';
 import Demo from './Demo';
-import AnimationSelector from './AnimationSelector';
 import AnimationButton from './AnimationButton';
 
 class Rebecca extends React.Component {
   constructor() {
     super();
+    this.updateSelectedClass = this.updateSelectedClass.bind(this);
+    this.updateActiveClass = this.updateActiveClass.bind(this);
     this.state = {
       classes: classes,
-      activeClass: 'rb-pulse'
+      selectedClass: '',
+      activeClass: 'rb-appearFromLeft'
     }
+  }
+
+  updateSelectedClass() {
+    const selectedClass = this.classInput.value;
+    this.setState({
+      selectedClass
+    })
+  }
+
+  updateActiveClass() {
+    const {selectedClass} = this.state;
+    this.setState({
+      activeClass: selectedClass
+    })
   }
 
   render() {
     return (
-      <div>
+      <div className='rebecca-wrap'>
          <Demo className={this.state.activeClass} name='Rebecca' desc='Smooth out-of-the-box animations'/>
-            <AnimationSelector onChange={() => console.log('foo')}>
+            <select onChange={this.updateSelectedClass} ref={(input) => this.classInput = input} >
               {this.state.classes.map((option, i, arr) => 
                     {return <option key={i} value={option}>{option}</option>})}
-               </AnimationSelector>
-               <AnimationButton onClick={() => console.log('foo')}>Animate</AnimationButton>
+               </select>
+               <AnimationButton onClick={this.updateActiveClass}>Animate</AnimationButton>
             </div>) 
   }
 }
